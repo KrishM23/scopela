@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SCOPE LA · Oral health access gaps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,650&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">
+        <span class="brand-mark">SCOPE LA</span>
+        <span class="brand-sub">Oral health access</span>
+      </div>
+      <p class="lede">
+        Where oral health care falls short in Council Districts 8, 9, and 10.
+      </p>
+    </header>
+
+    <main>
+      <section class="hero-stats" aria-label="Key gaps">
+        <article>
+          <p class="stat-label">CD 9 dental visits</p>
+          <p class="stat-value bad">42%</p>
+          <p class="stat-note">Citywide 59%</p>
+        </article>
+        <article>
+          <p class="stat-label">City gap</p>
+          <p class="stat-value">30 pts</p>
+          <p class="stat-note">CD 9 vs CD 11</p>
+        </article>
+        <article>
+          <p class="stat-label">CD 9 clinician share</p>
+          <p class="stat-value bad">0.6%</p>
+          <p class="stat-note">Citywide 3.3%</p>
+        </article>
+        <article>
+          <p class="stat-label">Meaningful Medi-Cal dentists</p>
+          <p class="stat-value warn">15%</p>
+          <p class="stat-note">California · UCSF</p>
+        </article>
+      </section>
+
+      <section class="map-panel">
+        <div class="map-head">
+          <div>
+            <h1>Access gaps on the map</h1>
+            <p>Click a district. Switch layers to compare.</p>
+          </div>
+          <div class="layer-tabs" role="tablist" aria-label="Map layers">
+            <button class="tab active" data-layer="dental_visit_pct" type="button">
+              Dental visits
+            </button>
+            <button class="tab" data-layer="food_insecurity_pct" type="button">
+              Food insecurity
+            </button>
+            <button class="tab" data-layer="clinician_occ_pct" type="button">
+              Clinician workforce
+            </button>
+            <button class="tab" data-layer="transport_barrier_pct" type="button">
+              Transport barriers
+            </button>
+          </div>
+        </div>
+        <div class="map-frame">
+          <div id="map" role="img" aria-label="Los Angeles council district choropleth"></div>
+          <aside class="map-side" id="district-card">
+            <p class="eyebrow">Focus · CD 8, 9, 10</p>
+            <h2>Click a district</h2>
+            <p class="side-copy">
+              CD 9 is the floor. CD 8 is next. CD 10 is better and still below
+              the city average.
+            </p>
+            <div class="legend" id="legend"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="split">
+        <div>
+          <h2>What stands out</h2>
+          <p>
+            Food hardship and dental access move together. Living near a grocery
+            does not. CD 9 is closer to markets than CD 8 and still has the worst
+            visit rate.
+          </p>
+          <p>
+            After poverty, clinician density still lines up with who gets care.
+            California has dentists. Too few take Medi-Cal where need is highest.
+          </p>
+        </div>
+        <div class="chart-card">
+          <h3>Adult dental visits by district</h3>
+          <canvas id="rankChart" height="340"></canvas>
+        </div>
+      </section>
+
+      <section class="scoreboard">
+        <h2>CD 8 · 9 · 10 at a glance</h2>
+        <div class="boards" id="boards"></div>
+      </section>
+
+      <section class="split reverse">
+        <div class="chart-card">
+          <h3>Usable dentist capacity</h3>
+          <canvas id="funnelChart" height="220"></canvas>
+          <p class="chart-note">
+            LA has many licensed dentists. Usable Medi-Cal capacity drops fast.
+          </p>
+        </div>
+        <div>
+          <h2>For SCOPE LA</h2>
+          <ul class="actions">
+            <li>
+              <strong>Start in CD 9 and CD 8.</strong>
+              More Medi-Cal chairs, school and clinic hours that fit working
+              families, help with the ride.
+            </li>
+            <li>
+              <strong>Grow dentists who take Medi-Cal.</strong>
+              Loan help tied to South LA. Dental therapists and hygienists in
+              safety-net clinics.
+            </li>
+            <li>
+              <strong>Food retail helps. It is not enough alone.</strong>
+              Keep Good Food Zone work. Pair it with dental access.
+            </li>
+            <li>
+              <strong>Measure usable care.</strong>
+              Medi-Cal dentists per ZIP, wait times, visit rates. Not license
+              counts citywide.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="foot">
+        <p>
+          SCOPE LA briefing · Sources: CDC PLACES via Civic Data Atlas, ACS
+          2020–24, LA County CCHP, LA County Oral Health Chartbook, UCSF
+          Healthforce Center.
+        </p>
+      </footer>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
